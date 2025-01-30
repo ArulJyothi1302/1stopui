@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BASE_URL, headerLabel, LOGO_URL, NAVBAR } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faHeart, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,13 @@ import axios from "axios";
 import { removeUser } from "../utils/userSlice";
 
 const Header = () => {
-  const [item, setItem] = useState(0);
+  const cartItems = useSelector((store) => store?.cart?.items);
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const store = useSelector((store) => store.user.data);
@@ -66,6 +72,7 @@ const Header = () => {
             </g>
           </svg>
         </div>
+
         <div
           className="tooltip tooltip-bottom "
           data-tip="Preferred customer program coupon."
@@ -75,6 +82,7 @@ const Header = () => {
             <span>Save Up to 25%</span>
           </button>
         </div>
+
         <div className="flex justify-center space-x-6 md:space-x-8 lg:space-x-12 w-full md:w-auto mt-4 md:mt-0">
           <div className="flex flex-col items-center">
             <FontAwesomeIcon
@@ -88,9 +96,7 @@ const Header = () => {
             <div className="tooltip tooltip-top" data-tip="Account">
               <FontAwesomeIcon className="text-2xl" icon={faUser} />
             </div>
-
             <button className="text-sm mt-1">Account</button>
-
             <div className="absolute top-12 hidden group-hover:block bg-white z-50 shadow-xl rounded-lg w-70 m-4 p-3">
               {!store ? (
                 <div className="p-2">
@@ -133,7 +139,7 @@ const Header = () => {
             <div className="relative flex flex-col items-center cursor-pointer">
               <FontAwesomeIcon className="text-2xl" icon={faCartShopping} />
               <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
-                {item}
+                {totalQuantity}
               </span>
               <p className="text-sm mt-1">Your Cart</p>
             </div>
@@ -173,6 +179,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+
         <hr className="border-2 border-blue-300 " />
 
         <div>

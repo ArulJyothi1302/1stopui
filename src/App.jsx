@@ -11,6 +11,8 @@ import appStore from "./utils/appstore";
 import AccountAndStatus from "./components/AccountAndStatus";
 import AccountSetting from "./components/AccountSetting";
 import Cart from "./components/Cart";
+import Purchase from "./components/Purchase";
+import ConfirmPurchase from "./components/ConfirmPurchase";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
               <Route path="/Account" element={<AccountAndStatus />} />
               <Route path="/profile" element={<AccountSetting />} />
             </Route>
+            <Route path="/purchase" element={<Purchase />} />
+            <Route path="/confirm-purchase/:id" element={<ConfirmPurchase />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <FooterContainer />
