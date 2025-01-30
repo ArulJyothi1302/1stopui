@@ -1,8 +1,6 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
+import React from "react";
+import { useSelector } from "react-redux";
+import useAccount from "./hooks/useAccount";
 
 const AccountOverview = () => {
   const user = useSelector((store) => store.user?.data);
@@ -10,41 +8,7 @@ const AccountOverview = () => {
     (store) => store.user?.data?.data || store.user.data
   );
   const order = useSelector((store) => store.orders.order);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const getUser = async () => {
-    if (store) {
-      return;
-    }
-
-    if (user) return;
-
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      dispatch(addUser(JSON.parse(storedUser)));
-      return;
-    }
-
-    try {
-      const res = await axios.get(`${BASE_URL}/profile/view`, {
-        withCredentials: true,
-      });
-
-      if (res.data) {
-        dispatch(addUser(res.data));
-      } else {
-        navigate("/");
-      }
-    } catch (err) {
-      navigate("/login");
-    }
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+  useAccount(user, store);
   return (
     user && (
       <>

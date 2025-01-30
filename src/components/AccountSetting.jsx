@@ -72,7 +72,6 @@ const AccountSetting = () => {
         <div className="col-span-9">
           <h1 className="text-2xl">Account Settings</h1>
           <div>
-            {/* Full Name Section */}
             <div className="flex gap-10 items-center justify-between my-2">
               <label>Login Id</label>
               {nameEdit ? (
@@ -96,7 +95,6 @@ const AccountSetting = () => {
               </button>
             </div>
 
-            {/* Email Section */}
             <div className="flex gap-10 items-center justify-between my-2">
               <label>Account Email</label>
               {emailEdit ? (
@@ -120,7 +118,6 @@ const AccountSetting = () => {
               </button>
             </div>
 
-            {/* Password Section */}
             <div className="flex gap-10 items-center justify-between my-2">
               <label>Account Password</label>
               {passwordEdit ? (
@@ -144,6 +141,7 @@ const AccountSetting = () => {
               </button>
             </div>
           </div>
+          <p className="text-red-500 text-md p-2">{err}</p>
         </div>
       </div>
 
