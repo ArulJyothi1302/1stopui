@@ -67,7 +67,7 @@ const Header = () => {
           </svg>
         </div>
         <div
-          className="tooltip tooltip-bottom " // Customize the tooltip width here
+          className="tooltip tooltip-bottom "
           data-tip="Preferred customer program coupon."
         >
           <button className="bg-cyan-900 px-4 py-2 rounded-full flex items-center space-x-2 text-white font-semibold shadow-md hover:bg-green-700 transition sm:flex">
