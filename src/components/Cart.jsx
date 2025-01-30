@@ -15,9 +15,14 @@ const Cart = () => {
     <div className="p-6 flex flex-col justify-center items-center my-10 gap-10">
       <div className=" flex flex-col justify-center items-center">
         <FaShoppingCart className="text-2xl w-40 h-10" />
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Your Cart is Empty
-        </h2>
+
+        {cartItems.length > 0 ? (
+          <h2 className="text-2xl font-bold mb-4 text-center"> Your Cart </h2>
+        ) : (
+          <h2 className="text-2xl font-bold mb-4 text-center py-2">
+            Your Cart is Empty
+          </h2>
+        )}
       </div>
       <div className="space-y-4">
         {cartItems.map((item) => (

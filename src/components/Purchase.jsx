@@ -24,7 +24,7 @@ const Purchase = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-4">
       {data.items.map((item, index) => (
         <Link to={`/confirm-purchase/${item.id}`} key={item.id}>
-          <div className="bg-slate-200 p-6 text-black text-lg rounded-lg shadow-md">
+          <div className="bg-slate-200 p-6 text-black text-lg rounded-lg shadow-md h-96">
             <img src={item.img} alt="image" />
             <h1 className="font-bold">{item.name}</h1>
             <h2 className="text-green-600 font-semibold">$ {item.price}</h2>
